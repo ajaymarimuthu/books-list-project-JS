@@ -56,6 +56,18 @@ function UI(){
     }
 
 
+    // Deleitng book 
+
+    UI.prototype.deleteBook=(target)=>{
+        // console.log(target);
+
+        if(target.className === 'delete' ){
+            target.parentElement.parentElement.remove();
+        }
+    }
+
+
+
 
     // method implementation to clearfields 
 
@@ -114,8 +126,23 @@ document.getElementById('book-form').addEventListener('submit',(e)=>{
 
     }
 
+    e.preventDefault();
+})
 
 
+// evet listener for delete 
+
+const delItem=document.getElementById('book-list').addEventListener('click',(e)=>{
+    // console.log(111);
+    const ui=new UI();
+    
+
+    // calling delete book 
+    ui.deleteBook(e.target);
+
+
+    // show message 
+    ui.showAlert('Book Removed','success');
 
     e.preventDefault();
 })
